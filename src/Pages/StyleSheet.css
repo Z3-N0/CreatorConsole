@@ -1,0 +1,74 @@
+
+.layout{
+  min-height: 100vh;
+}
+
+.Headers{
+  padding: auto;
+  font-size: large;
+}
+
+.content-main{
+  margin: 0 16px;
+}
+
+.main-breadcrumb{
+  margin: 16px 0;
+}
+
+.content-botIntegration{
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  min-height: auto;
+  text-align: center;
+  font-size: xx-large;
+  padding: 30px;
+  align-items: center;
+}
+
+.content-botIntegration-sub{
+  padding: 24px;
+  min-height: auto;
+  text-align: left;
+  font-size: large;
+  
+}
+
+
+.botIntegration-form1{
+  max-width: 600px;
+  position: relative;
+  text-align: left;
+}
+
+.submit-button{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.submit-button:hover{
+  box-shadow: none;
+}
+
+.get-started{
+  margin: 20px;
+  width: 20%;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.get-started:hover{
+  box-shadow: none;
+}
+
+.cards-container{
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  text-align: center;
+}
+
+.template-cards{
+  width: 15vw;
+  padding: 10px;
+  margin: 1vw;
+}
