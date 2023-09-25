@@ -49,7 +49,7 @@ const App = () => {
   const [intentModalOpen, setIntentModalOpen] = useState(false);
   const [slotModalOpen, setSlotModalOpen] = useState(false);
   const [intentsno, setIntentsno] = useState(0);
-  const [slotsno, setSlotsno] = useState(0);
+  const [slotsno, setSlotsno] = useState(10);
   const [intenteditor, setIntentEditor] = useState(false);
  
   
@@ -78,6 +78,7 @@ const App = () => {
     else
     {
       setIntentEditor(true);
+      console.log(intenteditor);
     }
     
   }
@@ -191,12 +192,13 @@ const App = () => {
             <Sider collapsible collapsed={incollapsed} onCollapse={(value) => setIncollapsed(value)}>
               
             <Menu key = {intentsno} theme="dark" defaultSelectedKeys={['1']} mode="inline" items={intents} onClick={intentEdit} />
-            <Menu key = {slotsno} theme="dark" defaultSelectedKeys={['1']} mode="inline" items={slots} onclick= {slotEdit} />
+            <Menu key = {slotsno} theme="dark" defaultSelectedKeys={['1']} mode="inline" items={slots} onClick= {slotEdit} />
             </Sider>
           </Layout>
+          
           <ConditionallyRender
             ifTrue={intenteditor}
-            show = {"hello"}
+            show = {<h1>dasfadsfdsda</h1>}
           />
           
         </Content>

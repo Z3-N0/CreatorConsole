@@ -139,13 +139,7 @@ const App = () => {
 
 
            Is your use of this bot is subject to the <a target='_blank' href='https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions' rel="noreferrer">Children's Online Privacy Protection Act (COPPA)</a>:
-            <Form.Item name = "COPPA"
-            rules={[
-              {
-                required: true,
-                message: "Please choose an answer"
-              },
-            ]}>
+            <Form.Item name = "COPPA">
               <Radio.Group defaultValue="No">
                 <Radio value="Yes"> Yes </Radio>
                 <Radio value="No"> No </Radio>

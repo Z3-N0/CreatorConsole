@@ -56,16 +56,11 @@ const App = () => {
     }
   }
 
-  const Select = (e) => {
-    console.log(e);
-    setSelected ({
-      selected : e
-     })
-     console.log(selected)
-  }
+  
 
   const onFinish = () => {
-    navigate("/Integration/Editor")
+    console.log(selected);
+    navigate("/Integration/Editor");
   }
 
 
@@ -90,7 +85,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<FolderAddOutlined />}
-                onClick={Select}
+                onClick={()=>{setSelected("blank")}}
               >
                 <Meta title="Blank Bot" description="Create your chatbot from scratch."/>
               </Card>
@@ -98,7 +93,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<CarOutlined />}
-                onClick={Select}
+                onClick={()=>{setSelected("trip")}}
                 name = "Trip"
               >
                 <Meta title="Book a Trip" description="Schedule trips and plans with customers" />
@@ -108,7 +103,7 @@ const App = () => {
               id='test'
                 hoverable
                 cover={<InfoCircleOutlined />}
-                onClick={Select}
+                onClick={()=>{setSelected("custSupport")}}
                 name = "CustSupport"
               >
                 <Meta title="Customer Support" description="Support bot meant to answer common queries."  />
@@ -117,7 +112,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<CoffeeOutlined />}
-                onClick={Select}
+                onClick={()=>{setSelected("restaurant")}}
                 name = "Restaurant"
               >
                 <Meta title="Restaurants" description="Take orders and manage restarants." />
@@ -126,7 +121,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<ScheduleOutlined />}
-                onClick={Select}
+                onClick={()=>{setSelected("meeting")}}
                 name = "Meeting"
               >
                 <Meta title="Book a meeting" description="Schedule meetings within an organization" />
