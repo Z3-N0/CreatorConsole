@@ -3,6 +3,11 @@
   min-height: 100vh;
 }
 
+.inner-layout{
+  min-height: 100vh;
+  border-left: white 2px solid;
+}
+
 .Headers{
   padding: auto;
   font-size: large;
@@ -11,11 +16,17 @@
 .content-main{
   margin: 0 16px;
 }
+.content-main-editor{
+  margin: 0;
+}
 
 .main-breadcrumb{
   margin: 16px 0;
 }
 
+.main-breadcrumb-editor{
+  margin: 16px 16px;
+}
 .content-botIntegration{
   display: flex;
   flex-direction: column;
@@ -35,6 +46,13 @@
   
 }
 
+.content-botEditor-sub{
+  padding: 24px;
+  min-height: 80vh;
+  text-align: left;
+  font-size: large;
+  
+}
 
 .botIntegration-form1{
   max-width: 600px;
@@ -71,4 +89,28 @@
   width: 15vw;
   padding: 10px;
   margin: 1vw;
+}
+
+.botEditor-divider{
+  min-height: 70vh;
+  background-color: black;
+}
+
+.modal-form{
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.modal-button-container{
+  display: flex;
+  flex-direction: row;
+
+}
+
+
+.modal-button{
+  font-size: medium;
+  width: auto;
+  margin-left: 1vw;
 }

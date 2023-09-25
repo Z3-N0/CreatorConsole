@@ -6,6 +6,7 @@ import Manage from './Pages/Manage';
 import Bill from './Pages/Billing';
 import Template from './Pages/Integration/Template';
 import PrimaryInfo from './Pages/Integration/PrimaryInfo';
+import Editor from './Pages/Integration/Editor';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/Integration" element={<Integration />}/>
       <Route path="/Integration/Primary-Information" element={<PrimaryInfo />}/>
       <Route path="/Integration/Template" element={<Template />}/>
+      <Route path="/Integration/Editor" element={<Editor />}/>
       <Route path="/Manage" element={<Manage />}/>
       <Route path="/Billing" element={<Bill />} />
     </Routes>

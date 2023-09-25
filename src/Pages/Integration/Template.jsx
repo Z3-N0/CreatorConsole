@@ -61,6 +61,7 @@ const App = () => {
     setSelected ({
       selected : e
      })
+     console.log(selected)
   }
 
   const onFinish = () => {
@@ -104,12 +105,13 @@ const App = () => {
               </Card>
 
               <Card className='template-cards'
+              id='test'
                 hoverable
                 cover={<InfoCircleOutlined />}
                 onClick={Select}
                 name = "CustSupport"
               >
-                <Meta title="Customer Support" description="Support bot meant to answer common queries." />
+                <Meta title="Customer Support" description="Support bot meant to answer common queries."  />
               </Card>
 
               <Card className='template-cards'
