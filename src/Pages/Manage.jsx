@@ -45,15 +45,15 @@ const App = () => {
     }
     else if(val['key'] === '2')
     {
-      navigate("/Integration");
+      navigate("/integration");
     }
     else if(val['key'] === '3')
     {
-      navigate("/Manage");
+      navigate("/manage");
     }
     else if(val['key'] === '4')
     {
-      navigate("/Billing");
+      navigate("/billing");
     }
   }
 

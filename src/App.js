@@ -7,18 +7,24 @@ import Bill from './Pages/Billing';
 import Template from './Pages/Integration/Template';
 import PrimaryInfo from './Pages/Integration/PrimaryInfo';
 import Editor from './Pages/Integration/Editor';
+import Create from './CreateBot';
+import Intent from './CreateIntent';
+import Slot from './CreateSlot';
 
 const App = () => {
   return (
     <>
     <Routes>
       <Route path="/" element={<Stats />} />
-      <Route path="/Integration" element={<Integration />}/>
-      <Route path="/Integration/Primary-Information" element={<PrimaryInfo />}/>
-      <Route path="/Integration/Template" element={<Template />}/>
-      <Route path="/Integration/Editor" element={<Editor />}/>
-      <Route path="/Manage" element={<Manage />}/>
-      <Route path="/Billing" element={<Bill />} />
+      <Route path="/integration" element={<Integration />}/>
+      <Route path="/integration/primary-information" element={<PrimaryInfo />}/>
+      <Route path="/integration/template" element={<Template />}/>
+      <Route path="/integration/editor" element={<Editor />}/>
+      <Route path="/manage" element={<Manage />}/>
+      <Route path="/billing" element={<Bill />} />
+      <Route path='/create' element={<Create />} />
+      <Route path='/intent' element={<Intent />} />
+      <Route path='/slot' element={<Slot />} />
     </Routes>
     </>
   );

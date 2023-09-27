@@ -42,17 +42,21 @@ const App = () => {
   const navigate = useNavigate();
 
   const goto = (val) => {
-    if (val['key'] === '1') {
+    if(val['key'] === '1')
+    {
       navigate("/");
     }
-    else if (val['key'] === '2') {
-      navigate("/Integration");
+    else if(val['key'] === '2')
+    {
+      navigate("/integration");
     }
-    else if (val['key'] === '3') {
-      navigate("/Manage");
+    else if(val['key'] === '3')
+    {
+      navigate("/manage");
     }
-    else if (val['key'] === '4') {
-      navigate("/Billing");
+    else if(val['key'] === '4')
+    {
+      navigate("/billing");
     }
   }
 
@@ -60,7 +64,7 @@ const App = () => {
 
   const onFinish = () => {
     console.log(selected);
-    navigate("/Integration/Editor");
+    navigate("/integration/editor");
   }
 
 
@@ -85,7 +89,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<FolderAddOutlined />}
-                onClick={()=>{setSelected("blank")}}
+                onClick={()=>{setSelected("Blank Bot")}}
               >
                 <Meta title="Blank Bot" description="Create your chatbot from scratch."/>
               </Card>
@@ -93,7 +97,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<CarOutlined />}
-                onClick={()=>{setSelected("trip")}}
+                onClick={()=>{setSelected("Trip Bot")}}
                 name = "Trip"
               >
                 <Meta title="Book a Trip" description="Schedule trips and plans with customers" />
@@ -103,7 +107,7 @@ const App = () => {
               id='test'
                 hoverable
                 cover={<InfoCircleOutlined />}
-                onClick={()=>{setSelected("custSupport")}}
+                onClick={()=>{setSelected("Customer Support Bot")}}
                 name = "CustSupport"
               >
                 <Meta title="Customer Support" description="Support bot meant to answer common queries."  />
@@ -112,7 +116,7 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<CoffeeOutlined />}
-                onClick={()=>{setSelected("restaurant")}}
+                onClick={()=>{setSelected("Restaurant Bot")}}
                 name = "Restaurant"
               >
                 <Meta title="Restaurants" description="Take orders and manage restarants." />
@@ -121,12 +125,15 @@ const App = () => {
               <Card className='template-cards'
                 hoverable
                 cover={<ScheduleOutlined />}
-                onClick={()=>{setSelected("meeting")}}
+                onClick={()=>{setSelected("Meeting Scheduler Bot")}}
                 name = "Meeting"
               >
                 <Meta title="Book a meeting" description="Schedule meetings within an organization" />
               </Card>
               
+            </div>
+            <div className='selected-template'>
+              {selected} 
             </div>
             <Button className="submit-button" type='primary' onClick={onFinish}>
               Save and Proceed

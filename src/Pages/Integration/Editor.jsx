@@ -4,15 +4,12 @@ import {
   PieChartOutlined,
   ContainerOutlined,
   SlidersOutlined,
-  FormOutlined,
-  DeploymentUnitOutlined, 
-  PlusCircleOutlined,
-  BulbOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Form, Input, Button, Modal } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Tabs } from 'antd';
+
 import '../StyleSheet.css';
 import { useNavigate } from "react-router-dom";
-import { ConditionallyRender } from "react-util-kit";
+import Intents from './Intents';
 
 
 
@@ -33,26 +30,22 @@ const items = [
 
 ];
 
-const intents = [
-  getItem('Intents', 'sub1', <FormOutlined />, [getItem('add Intent', 'baseIntent', <PlusCircleOutlined />)]),
+const tabs= [
+  {
+    key: '1',
+    label: 'Intents',
+    children: <Intents />,
+  },
+  {
+    key: '2',
+    label: 'Slots',
+    children: 'Slots tab',
+  }
 ];
-
-const slots = [
-  getItem('Slots', 'sub2', <DeploymentUnitOutlined />, [getItem('add Slot ', 'baseSlot', <PlusCircleOutlined />)]),
-];
-
 
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const [incollapsed, setIncollapsed] = useState(false);
-  const [intentModalOpen, setIntentModalOpen] = useState(false);
-  const [slotModalOpen, setSlotModalOpen] = useState(false);
-  const [intentsno, setIntentsno] = useState(0);
-  const [slotsno, setSlotsno] = useState(10);
-  const [intenteditor, setIntentEditor] = useState(false);
- 
-  
 
   const {
     token: { colorBgContainer },
@@ -60,60 +53,24 @@ const App = () => {
 
   const navigate = useNavigate();
 
-  const slotEdit = (e) =>{
-    if(e.key === 'baseSlot'){
-      setSlotModalOpen(true);
-    }
-    else
-    {
-      setIntentEditor(true);
-    }
-    
-  }
 
-  const intentEdit = (e) =>{
-    if(e.key === 'baseIntent'){
-      setIntentModalOpen(true);
-    }
-    else
-    {
-      setIntentEditor(true);
-      console.log(intenteditor);
-    }
-    
-  }
-
-  const handleIntentOk = (e) => {
-    setIntentModalOpen(false);
-    setIntentsno(intentsno+1)
-    let newIntent = getItem(e.name, intentsno, <BulbOutlined />)
-    intents['0'].children.push(newIntent);
-  };
-
-  const handleSlotOk = (e) => {
-    setSlotModalOpen(false);
-    setSlotsno(slotsno+1)
-    let newSlot = getItem(e.name, slotsno, <BulbOutlined />)
-    slots['0'].children.push(newSlot);
-  }
-
-  const handleCancel = () => {
-    setIntentModalOpen(false);
-    setSlotModalOpen(false);
-  }
 
   const goto = (val) => {
-    if (val['key'] === '1') {
+    if(val['key'] === '1')
+    {
       navigate("/");
     }
-    else if (val['key'] === '2') {
-      navigate("/Integration");
+    else if(val['key'] === '2')
+    {
+      navigate("/integration");
     }
-    else if (val['key'] === '3') {
-      navigate("/Manage");
+    else if(val['key'] === '3')
+    {
+      navigate("/manage");
     }
-    else if (val['key'] === '4') {
-      navigate("/Billing");
+    else if(val['key'] === '4')
+    {
+      navigate("/billing");
     }
   }
 
@@ -134,73 +91,9 @@ const App = () => {
             <Breadcrumb.Item>Bot Integration</Breadcrumb.Item>
             <Breadcrumb.Item>Bot Editor</Breadcrumb.Item>
           </Breadcrumb>
-          <Modal title="Enter a name for your Intent" 
-          closeIcon = " "
-          open={intentModalOpen} 
-          footer={[]}
-          >
-            
-            <Form
-                layout="vertical"
-                className='modal-form'
-                initialValues={{
-                  modifier: 'public',
-                }}
-                onFinish={handleIntentOk}>
-              <Form.Item name = 'name'>
-                <Input placeholder='sampleIntent'/>
-              </Form.Item>
-              <div className='modal-button-container'>
-                <Button className='modal-button' key="cancel" type="primary" htmlType="reset" onClick={handleCancel}>
-                  cancel
-                </Button> 
-                <Button className='modal-button' key="submit" type="primary" htmlType="submit">
-                  submit
-                </Button> 
-              </div>
-              
-            </Form>
-          </Modal>
-          <Modal title="Enter a name for your Slot" 
-          closeIcon = " "
-          open={slotModalOpen} 
-          footer={[]}
-          >
-            <Form
-                layout="vertical"
-                className='modal-form'
-                initialValues={{
-                  modifier: 'public',
-                }}
-                onFinish={handleSlotOk}>
-              <Form.Item name = 'name'>
-                <Input placeholder='sampleSlot'/>
-              </Form.Item>
-              <div className='modal-button-container'>
-                <Button className='modal-button' key="cancel" type="primary" htmlType="reset" onClick={handleCancel}>
-                  cancel
-                </Button> 
-                <Button className='modal-button' key="submit" type="primary" htmlType="submit">
-                  submit
-                </Button> 
-              </div>
-              
-            </Form>
-          </Modal>
-          
-          <Layout className='inner-layout'>
-            <Sider collapsible collapsed={incollapsed} onCollapse={(value) => setIncollapsed(value)}>
-              
-            <Menu key = {intentsno} theme="dark" defaultSelectedKeys={['1']} mode="inline" items={intents} onClick={intentEdit} />
-            <Menu key = {slotsno} theme="dark" defaultSelectedKeys={['1']} mode="inline" items={slots} onClick= {slotEdit} />
-            </Sider>
-          </Layout>
-          
-          <ConditionallyRender
-            ifTrue={intenteditor}
-            show = {<h1>dasfadsfdsda</h1>}
-          />
-          
+
+          <Tabs className='editor-tabs' defaultActiveKey="1" items={tabs} />
+
         </Content>
       </Layout>
     </Layout>

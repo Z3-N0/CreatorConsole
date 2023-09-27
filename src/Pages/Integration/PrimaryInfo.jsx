@@ -43,23 +43,26 @@ const App = () => {
   const navigate = useNavigate();
 
   const goto = (val) => {
-    if (val['key'] === '1') {
+    if(val['key'] === '1')
+    {
       navigate("/");
     }
-    else if (val['key'] === '2') {
-      navigate("/Integration");
+    else if(val['key'] === '2')
+    {
+      navigate("/integration");
     }
-    else if (val['key'] === '3') {
-      navigate("/Manage");
+    else if(val['key'] === '3')
+    {
+      navigate("/manage");
     }
-    else if (val['key'] === '4') {
-      navigate("/Billing");
+    else if(val['key'] === '4')
+    {
+      navigate("/billing");
     }
   }
-
   const onFinish = (val) => {
     console.log(val);
-    navigate("/Integration/Template");
+    // navigate("/integration/template");
   }
 
   return (
@@ -139,8 +142,13 @@ const App = () => {
 
 
            Is your use of this bot is subject to the <a target='_blank' href='https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions' rel="noreferrer">Children's Online Privacy Protection Act (COPPA)</a>:
-            <Form.Item name = "COPPA">
-              <Radio.Group defaultValue="No">
+            <Form.Item name = "COPPA" rules={[
+              {
+                required: true,
+                message: "Please choose an option"
+              },
+            ]}>
+              <Radio.Group >
                 <Radio value="Yes"> Yes </Radio>
                 <Radio value="No"> No </Radio>
               </Radio.Group>

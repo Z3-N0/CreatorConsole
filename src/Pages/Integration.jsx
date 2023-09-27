@@ -36,22 +36,26 @@ const App = () => {
   const navigate = useNavigate();
 
   const goto = (val) => {
-    if (val['key'] === '1') {
+    if(val['key'] === '1')
+    {
       navigate("/");
     }
-    else if (val['key'] === '2') {
-      navigate("/Integration");
+    else if(val['key'] === '2')
+    {
+      navigate("/integration");
     }
-    else if (val['key'] === '3') {
-      navigate("/Manage");
+    else if(val['key'] === '3')
+    {
+      navigate("/manage");
     }
-    else if (val['key'] === '4') {
-      navigate("/Billing");
+    else if(val['key'] === '4')
+    {
+      navigate("/billing");
     }
   }
 
   const onFinish = () => {
-    navigate("/Integration/Primary-Information");
+    navigate("/integration/primary-information");
   }
 
   return (
