@@ -7,9 +7,6 @@ import Bill from './Pages/Billing';
 import Template from './Pages/Integration/Template';
 import PrimaryInfo from './Pages/Integration/PrimaryInfo';
 import Editor from './Pages/Integration/Editor';
-import Create from './CreateBot';
-import Intent from './CreateIntent';
-import Slot from './CreateSlot';
 
 const App = () => {
   return (
@@ -22,9 +19,6 @@ const App = () => {
       <Route path="/integration/editor" element={<Editor />}/>
       <Route path="/manage" element={<Manage />}/>
       <Route path="/billing" element={<Bill />} />
-      <Route path='/create' element={<Create />} />
-      <Route path='/intent' element={<Intent />} />
-      <Route path='/slot' element={<Slot />} />
     </Routes>
     </>
   );

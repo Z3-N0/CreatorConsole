@@ -9,8 +9,8 @@ import { Breadcrumb, Layout, Menu, theme, Tabs } from 'antd';
 
 import '../StyleSheet.css';
 import { useNavigate } from "react-router-dom";
-import Intents from './Intents';
-
+import Intents from './Editor/Intents';
+import Slots from './Editor/Slots';
 
 
 const { Header, Content, Sider } = Layout;
@@ -39,7 +39,7 @@ const tabs= [
   {
     key: '2',
     label: 'Slots',
-    children: 'Slots tab',
+    children: <Slots />,
   }
 ];
 

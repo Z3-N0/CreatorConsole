@@ -11,6 +11,9 @@
 # production
 /build
 
+#Access Keys
+/src/Pages/Integration/Editor/AWS-keys.js
+
 # misc
 .DS_Store
 .env.local
