@@ -133,19 +133,24 @@
   margin-left: 1vw;
 
 }
+.add-slot-button{
+  width: 8vw;
+  align-items: right;
+  margin-top: 1vw;
+  margin-bottom: 2vw;
+  background-color: #0F52BA;
+  color: white;
 
-.intent-menu{
-  width: fit-content;
-  justify-content: center;
-  max-height: fit-content;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+  
+.add-slot-button:hover{
+  box-shadow: none;
 }
 
-.utterance-form{
-  width: 70%;
-  display: flex;
-  flex-direction: row;
 
-}
+
+
 
 .Slots-form{
 
@@ -170,4 +175,28 @@
   
 .submit-button-slots:hover{
   box-shadow: none;
+}
+
+.slot-card{
+  max-width: 40vw;
+  background-color: #fff;
+}
+
+
+.intents-form{
+  max-width: 60vw;
+  font-size: medium;
+  padding: 1vw;
+}
+
+.intent-card{
+  max-width: 60vw;
+  background-color: #fff;
+}
+
+
+.slots-embed-space{
+  display: flex;
+  margin-bottom: 10px;
+  padding: 1vw;
 }

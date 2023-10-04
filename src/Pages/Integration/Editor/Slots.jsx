@@ -19,7 +19,7 @@ const Slots = () => {
     <div className="Slot-container">
       {components.map(() => ( <SlotsForm /> ))} 
           <div className = "btnContainer" >
-            <Button className = "makeDivsBtn"  onClick = {renderForm}> 
+            <Button className = "add-slot-button"  onClick = {renderForm}> 
               Add Slot Type
             </Button>
           </div>

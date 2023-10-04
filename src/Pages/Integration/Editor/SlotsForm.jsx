@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Divider } from "antd";
+import { Card, Form, Input, Button, Divider } from "antd";
 import {
   MinusCircleOutlined,
   PlusOutlined
@@ -64,114 +64,116 @@ const formItemLayoutWithOutLabel = {
 const SlotForm = () => {
   return (
     <>
-      <Form 
-      className="Slots-form" 
-      onFinish={Submitdata}
-      labelCol={{ flex: '110px' }}
-      labelAlign="left"
-      labelWrap
-      wrapperCol={{ flex: 1 }}
-      >
-        <Form.Item 
-        name="slotName" 
-        label="Slot Name"
-        placeholder="slotNameWithoutSpaces"
-        rules={[
-          {
-            required: true,
-            message: "Please enter a name without any whitespaces"
-          }]}
+      <Card title='Create Slot' className="slot-card">
+        <Form 
+        className="Slots-form" 
+        onFinish={Submitdata}
+        labelCol={{ flex: '110px' }}
+        labelAlign="left"
+        labelWrap
+        wrapperCol={{ flex: 1 }}
         >
-          <Input />
-        </Form.Item>
-        <Form.Item 
-        name="desc" 
-        label="Description:"
-        rules={[
-          {
-            required: true,
-            message: "Please enter a description"
-          }]}
-        >
-          <TextArea rows={2} />
-        </Form.Item>
-        <div className="slot-form-comp">
-          Enter Possible Values for the slot type:
-        </div>
-        <Form.List
-          name="vals"
+          <Form.Item 
+          name="slotName" 
+          label="Slot Name"
+          placeholder="slotNameWithoutSpaces"
           rules={[
             {
-              validator: async (_, names) => {
-                if (!names) {
-                  return Promise.reject(new Error("At least 2 Slot types"));
-                }
+              required: true,
+              message: "Please enter a name without any whitespaces"
+            }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item 
+          name="desc" 
+          label="Description:"
+          rules={[
+            {
+              required: true,
+              message: "Please enter a description"
+            }]}
+          >
+            <TextArea rows={2} />
+          </Form.Item>
+          <div className="slot-form-comp">
+            Enter Possible Values for the slot type:
+          </div>
+          <Form.List
+            name="vals"
+            rules={[
+              {
+                validator: async (_, names) => {
+                  if (!names) {
+                    return Promise.reject(new Error("At least 2 Slot types"));
+                  }
+                },
               },
-            },
-          ]}
-        >
-          {(fields, { add, remove }, { errors }) => (
-            <>
-              {fields.map((field, index) => (
-                <Form.Item
-                  {...(index === 0
-                    ? formItemLayout
-                    : formItemLayoutWithOutLabel)}
-                  label={index === 0 ? "Values" : ""}
-                  required={false}
-                  key={field.key}
-                >
+            ]}
+          >
+            {(fields, { add, remove }, { errors }) => (
+              <>
+                {fields.map((field, index) => (
                   <Form.Item
-                    {...field}
-                    validateTrigger={["onChange", "onBlur"]}
-                    rules={[
-                      {
-                        required: true,
-                        whitespace: true,
-                        message: "Please enter Slot value or delete this field",
-                      },
-                    ]}
-                    noStyle
+                    {...(index === 0
+                      ? formItemLayout
+                      : formItemLayoutWithOutLabel)}
+                    label={index === 0 ? "Values" : ""}
+                    required={false}
+                    key={field.key}
                   >
-                    <Input
-                      placeholder="Slot value"
-                      style={{
-                        width: "60%",
-                      }}
-                    />
+                    <Form.Item
+                      {...field}
+                      validateTrigger={["onChange", "onBlur"]}
+                      rules={[
+                        {
+                          required: true,
+                          whitespace: true,
+                          message: "Please enter Slot value or delete this field",
+                        },
+                      ]}
+                      noStyle
+                    >
+                      <Input
+                        placeholder="Slot value"
+                        style={{
+                          width: "60%",
+                        }}
+                      />
+                    </Form.Item>
+                    {fields.length > 1 ? (
+                      <MinusCircleOutlined
+                        className="dynamic-delete-button"
+                        onClick={() => remove(field.name)}
+                      />
+                    ) : null}
                   </Form.Item>
-                  {fields.length > 1 ? (
-                    <MinusCircleOutlined
-                      className="dynamic-delete-button"
-                      onClick={() => remove(field.name)}
-                    />
-                  ) : null}
+                ))}
+
+                <Form.Item>
+                  <Button
+                    type="dashed"
+                    onClick={() => add()}
+                    style={{
+                      width: "60%",
+                    }}
+                    icon={<PlusOutlined />}
+                  >
+                    Add Slot Value
+                  </Button>
+                  <Form.ErrorList errors={errors} />
                 </Form.Item>
-              ))}
+              </>
+            )}
+          </Form.List>
 
-              <Form.Item>
-                <Button
-                  type="dashed"
-                  onClick={() => add()}
-                  style={{
-                    width: "60%",
-                  }}
-                  icon={<PlusOutlined />}
-                >
-                  Add Slot Value
-                </Button>
-                <Form.ErrorList errors={errors} />
-              </Form.Item>
-            </>
-          )}
-        </Form.List>
+          <Button className="submit-button-slots" type="primary" htmlType="submit">
+            Save
+          </Button>
 
-        <Button className="submit-button-slots" type="primary" htmlType="submit">
-          Save
-        </Button>
-
-        <Divider />
-      </Form>
+          <Divider />
+        </Form>
+      </Card>
     </>
   );
 };
