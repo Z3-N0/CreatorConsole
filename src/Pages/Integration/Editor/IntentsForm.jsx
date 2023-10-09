@@ -2,7 +2,7 @@ import React from "react";
 import {
   Checkbox,
   Space,
-  Dropdown,
+  Select,
   Card,
   Form,
   Input,
@@ -12,7 +12,6 @@ import {
 import {
   MinusCircleOutlined,
   PlusOutlined,
-  DownOutlined,
 } from "@ant-design/icons";
 import AWS from "aws-sdk";
 import keys from "./AWS-keys";
@@ -20,20 +19,6 @@ import keys from "./AWS-keys";
 AWS.config.update(keys);
 // const lexmodelbuildingservice = new AWS.LexModelBuildingService();
 
-const items = [
-  {
-    key: "1",
-    label: "Item 1",
-  },
-  {
-    key: "2",
-    label: "Item 2",
-  },
-  {
-    key: "3",
-    label: "Item 3",
-  },
-];
 
 const Submitdata = (values) => {
   console.log(values);
@@ -93,7 +78,7 @@ const IntentsForm = () => {
             Enter sample utterances to trigger intent.
           </div>
           <Form.List
-            name="vals"
+            name="utterances"
             rules={[
               {
                 validator: async (_, names) => {
@@ -175,7 +160,7 @@ const IntentsForm = () => {
                     <Form.Item
                       label="Slot Name"
                       {...restField}
-                      name="slotName"
+                      name={[name, "slotname"]}
                       rules={[{ required: true, message: "Missing Slot name" }]}
                     >
                       <Input placeholder="eg. Location" />
@@ -183,31 +168,25 @@ const IntentsForm = () => {
                     <Form.Item
                       label="Slot Type"
                       {...restField}
-                      name="slotType"
-                      rules={[{ required: true, message: "Missing Slot Type" }]}
+                      name={[name, "slotType"]}
+                      rules={[{ message: "Missing Slot Type" }]}
                     >
-                      <Dropdown
-                        menu={{
-                          items,
-                          selectable: true,
-                        }}
-                      >
-                        <Space>
-                          Type
-                          <DownOutlined />
-                        </Space>
-                      </Dropdown>
+                      <Select>
+                        <Select.Option value="item1">item 1</Select.Option>
+                        <Select.Option value="item2">item 2</Select.Option>
+                        <Select.Option value="item3">item 3</Select.Option>
+                      </Select>
                     </Form.Item>
                     <Form.Item
                       label="Prompt"
                       {...restField}
-                      name="prompt"
+                      name={[name, "prompt"]}
                       rules={[{ required: true, message: "Missing prompt" }]}
                     >
                       <Input placeholder="eg. what city?" />
                     </Form.Item>
-                    <Form.Item {...restField} name="required">
-                      <Checkbox>Required</Checkbox>
+                    <Form.Item {...restField} name={[name, "required"]}>
+                      <Checkbox> Required</Checkbox>
                     </Form.Item>
                     <MinusCircleOutlined onClick={() => remove(name)} />
                   </Space>

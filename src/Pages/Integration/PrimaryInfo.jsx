@@ -62,7 +62,7 @@ const App = () => {
   }
   const onFinish = (val) => {
     console.log(val);
-    // navigate("/integration/template");
+    navigate("/integration/template");
   }
 
   return (
